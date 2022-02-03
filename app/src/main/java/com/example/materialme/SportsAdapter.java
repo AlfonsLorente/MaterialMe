@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -57,7 +60,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
                                  int position) {
         // Get current sport.
         Sport currentSport = mSportsData.get(position);
-
+        Glide.with(mContext).load(currentSport.getImageResource()).into(holder.mSportsImage);
         // Populate the textviews with data.
         holder.bindTo(currentSport);
     }
@@ -77,6 +80,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
      * ViewHolder class that represents each row of data in the RecyclerView.
      */
     class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView mSportsImage;
 
         // Member Variables for the TextViews
         private TextView mTitleText;
@@ -93,6 +97,8 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
+            mSportsImage = (ImageView) itemView.findViewById(R.id.sportsImage);
+
         }
 
         void bindTo(Sport currentSport){
