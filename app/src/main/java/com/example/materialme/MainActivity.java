@@ -1,6 +1,7 @@
 
 package com.example.materialme;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetSports(View view) {
-
+        startActivity(new Intent(MainActivity.this, MainActivity.class));
+        MainActivity.this.finish();
     }
 }
